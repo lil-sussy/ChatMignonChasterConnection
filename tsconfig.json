@@ -1,33 +1,42 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "CommonJS",
-    "lib": ["ES2020"],                   
+    /* Base Options: */
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "target": "es2022",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "isolatedModules": true,
+
+    /* Strictness */
     "strict": true,
-    "baseUrl": "./",
-    "esModuleInterop": true,                 
-    "skipLibCheck": true,                     
-    "forceConsistentCasingInFileNames": true,
+    "noUncheckedIndexedAccess": true,
+    "checkJs": true,
+
+    /* Bundled projects */
+    "lib": ["dom", "dom.iterable", "ES2022"],
+    "noEmit": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "jsx": "preserve",
+    "plugins": [{ "name": "next" }],
+    "incremental": true,
+
+    /* Path Aliases */
+    "baseUrl": ".",
     "paths": {
-      "@src/*": ["src/*"]
-    },
-    "useUnknownInCatchVariables": false
-  },
-  "ts-node": {
-    "swc": true,
-    "require": [
-      "tsconfig-paths/register",
-      "./config.ts"
-    ],
+      "@/*": ["./src/*"]
+    }
   },
   "include": [
-    "src/**/*.ts",
-    "spec/**/*.ts",
-    "config.ts",
-    "scripts",
-    "eslint.config.ts"
+    ".eslintrc.cjs",
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.cjs",
+    "**/*.js",
+    ".next/types/**/*.ts"
   ],
-  "exclude": [
-    "src/public/*"
-  ]
+  "exclude": ["node_modules"]
 }
